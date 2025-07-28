@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feza - Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Theming - Cybernetic Future Scheme */
+        :root {
+            --bg-dark: #0A101F;
+            --text-dark: #E1E8F0;
+            --accent-dark: #00BFFF;
+            --card-dark: #171F32;
+            --border-dark: #2A3B5A;
+
+            --bg-light: #F7F9FC;
+            --text-light: #1C2A44;
+            --accent-light: #007BFF;
+            --card-light: #FFFFFF;
+            --border-light: #E1E8F0;
+
+            --font-family: 'Inter', sans-serif;
+        }
+
+        /* Base Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling the whole page */
+        }
+
+        body {
+            font-family: var(--font-family);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        body.light-mode {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        /* Deck Container */
+        #deck-container {
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            max-height: 750px;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        body.dark-mode #deck-container {
+             border: 1px solid var(--border-dark);
+        }
+        body.light-mode #deck-container {
+             border: 1px solid var(--border-light);
+        }
+
+
+        /* Slide Styles */
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 4rem 5rem;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        body.dark-mode .slide {
+            background-color: var(--bg-dark);
+        }
+        
+        body.light-mode .slide {
+            background-color: var(--bg-light);
+        }
+
+        /* Slide Content Styling */
+        .slide h1 { font-size: 3.5rem; margin-top: 2rem; }
+        .slide h2 { font-size: 2.5rem; color: var(--accent-dark); margin-bottom: 2rem; }
+        .slide h3 { font-size: 1.5rem; }
+        .slide p { font-size: 1.2rem; max-width: 70ch; opacity: 0.9; }
+        .slide ul { font-size: 1.2rem; line-height: 2; max-width: 70ch; text-align: left; list-style: none; padding: 0;}
+        .slide li { margin-bottom: 1rem; }
+        
+        body.light-mode .slide h2 { color: var(--accent-light); }
+        body.light-mode .slide p.accent-p { color: var(--accent-light); }
+        .slide p.accent-p { font-size: 1.5rem; color: var(--accent-dark); }
+        
+        .slide .logo {
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        body.light-mode .logo {
+            background-image: url('https://storage.googleapis.com/context-storage/8928f27f-0013-4f57-9753-0596f0f9b846.jpg');
+        }
+
+        body.dark-mode .logo {
+            background-image: url('https://storage.googleapis.com/context-storage/6b7b355f-1bc7-4821-af4c-0b3e384a0380.jpg');
+        }
+
+        .slide .columns {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            width: 100%;
+            gap: 2rem;
+        }
+        .slide .column {
+            flex: 1;
+        }
+
+        .team-layout {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            text-align: left;
+        }
+        .team-headshot {
+            width: 150px;
+            height: 150px;
+            background-color: var(--card-dark);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        body.light-mode .team-headshot {
+             background-color: var(--border-light);
+        }
+        
+        /* Gemini Feature Styles */
+        .gemini-feature-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        #ticker-input {
+            font-size: 1rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            width: 200px;
+            border: 1px solid;
+        }
+        
+        body.dark-mode #ticker-input {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+            color: var(--text-dark);
+        }
+        body.light-mode #ticker-input {
+            background-color: var(--card-light);
+            border-color: var(--border-light);
+            color: var(--text-light);
+        }
+        
+        #analyze-button {
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            font-weight: 500;
+        }
+        
+        body.dark-mode #analyze-button {
+             background-color: var(--accent-dark);
+             color: #0A101F;
+        }
+        body.light-mode #analyze-button {
+             background-color: var(--accent-light);
+             color: #fff;
+        }
+        
+        #briefing-result {
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 80%;
+            height: 250px;
+            overflow-y: auto;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        body.dark-mode #briefing-result {
+            background-color: var(--card-dark);
+            border: 1px solid var(--border-dark);
+        }
+        body.light-mode #briefing-result {
+            background-color: var(--card-light);
+            border: 1px solid var(--border-light);
+        }
+        
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--accent-dark);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-top: 2rem;
+        }
+        body.light-mode .loader {
+            border-top-color: var(--accent-light);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        /* Navigation Controls */
+        #deck-controls {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .nav-button {
+            background: none;
+            border: 1px solid;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        body.dark-mode .nav-button {
+            color: var(--text-dark);
+            border-color: var(--border-dark);
+        }
+        body.light-mode .nav-button {
+            color: var(--text-light);
+            border-color: var(--border-light);
+        }
+        body.dark-mode .nav-button:hover { background-color: var(--card-dark); }
+        body.light-mode .nav-button:hover { background-color: var(--border-light); }
+
+        #slide-counter {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 2rem;
+            font-size: 1rem;
+            opacity: 0.5;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="deck-container">
+        <!-- Slide 1: Title -->
+        <section class="slide active">
+            <div class="logo" style="width: 200px; height: 200px;"></div>
+            <h1>Feza</h1>
+            <p class="accent-p">The Autonomous AI-Powered Trading Firm.</p>
+        </section>
+
+        <!-- Slide 2: The Problem -->
+        <section class="slide">
+            <h2>Trading is a Human Problem.</h2>
+            <div class="columns">
+                <div class="column">
+                    <h3>Emotional Decisions</h3>
+                    <p style="max-width: 30ch;">Fear and greed lead to irrational choices and significant losses.</p>
+                </div>
+                <div class="column">
+                    <h3>Markets Never Sleep</h3>
+                    <p style="max-width: 30ch;">24/7 crypto and global markets create opportunities humans miss.</p>
+                </div>
+                <div class="column">
+                    <h3>Information Overload</h3>
+                    <p style="max-width: 30ch;">No human can process the vast amount of market data in real-time.</p>
+                </div>
+            </div>
+            <h3 style="margin-top: 5rem;">The result: Missed opportunities and costly errors.</h3>
+        </section>
+
+        <!-- Slide 3: The Solution -->
+        <section class="slide">
+            <h2>Feza: Trading, Perfected by AI.</h2>
+            <p>Feza is a fully autonomous trading firm that removes human error. We deploy an army of thousands of specialized AI models that trade global markets 24/7 with pure, data-driven logic.</p>
+            <div class="columns">
+                <div class="column">
+                    <h3>Emotion-Free</h3>
+                    <p>Executes trades based on data, not sentiment.</p>
+                </div>
+                <div class="column">
+                    <h3>Always On</h3>
+                    <p>Operates across all time zones and markets.</p>
+                </div>
+                <div class="column">
+                    <h3>Infinitely Scalable</h3>
+                    <p>Processes limitless data streams simultaneously.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 4: Why Now? -->
+        <section class="slide">
+            <h2>A Perfect Convergence of Technology.</h2>
+            <div class="columns" style="text-align: left;">
+                <div class="column">
+                    <h3>AI Advancement</h3>
+                    <p>Transformer models and new techniques allow for deeper market understanding than ever before.</p>
+                </div>
+                <div class="column">
+                    <h3>Efficient Computing</h3>
+                    <p>The rise of efficient data types (float8/16) and accessible hardware makes deploying thousands of models economically viable.</p>
+                </div>
+                <div class="column">
+                    <h3>API Economy</h3>
+                    <p>The proliferation of brokerage and data APIs makes every global asset class programmatically tradable.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 5: Market Size -->
+        <section class="slide">
+            <h2>A Multi-Trillion Dollar Opportunity.</h2>
+            <p>We operate in the largest markets in the world. Our addressable market is the daily trading volume of all API-accessible assets.</p>
+            <div class="columns">
+                <div class="column">
+                    <h3 style="font-size: 2.5rem;">$6.6T+</h3>
+                    <p>Forex Daily Volume</p>
+                </div>
+                <div class="column">
+                    <h3 style="font-size: 2.5rem;">$500B+</h3>
+                    <p>Equities Daily Volume</p>
+                </div>
+                <div class="column">
+                    <h3 style="font-size: 2.5rem;">$100B+</h3>
+                    <p>Crypto Daily Volume</p>
+                </div>
+            </div>
+            <h3 style="margin-top: 4rem;">Capturing even a fraction of a basis point of this volume represents a massive revenue opportunity.</h3>
+        </section>
+        
+        <!-- Slide 6: Product & Technology -->
+        <section class="slide">
+            <h2>Our Unfair Advantage: The Tech Stack.</h2>
+            <div class="columns" style="text-align: left;">
+                <div class="column">
+                    <h3>The AI Army</h3>
+                    <p>Instead of one monolithic model, we use thousands of lightweight, specialized models. Each AI is an expert on a single asset, allowing for hyper-specialization and rapid adaptation.</p>
+                </div>
+                <div class="column">
+                    <h3>Zerfoo: Our Engine</h3>
+                    <p>To power this army, we built Zerfoo, a proprietary ML framework in Go. It's designed from the ground up for extreme concurrency and real-time training, giving us a speed and efficiency advantage that off-the-shelf tools can't provide.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Traction & Milestones -->
+        <section class="slide">
+            <h2>Proven Execution.</h2>
+            <ul>
+                <li>✅ **Profitable PoC:** Developed a machine learning strategy on TradingView that proved consistently profitable in backtesting.</li>
+                <li>✅ **Proprietary Framework:** Architected and built Zerfoo, our custom ML engine in Go, capable of training Transformer-class networks.</li>
+                <li>✅ **Open Source Foundation:** Open-sourced the core Zerfoo framework, demonstrating technical leadership.</li>
+                <li>✅ **Full-Time Commitment:** Founder is now 100% dedicated to building Feza full-time.</li>
+                <li>➡️ **Next:** Integrate with live brokerage APIs for pilot trading (Q4 2025).</li>
+            </ul>
+        </section>
+        
+        <!-- NEW SLIDE: Gemini API Demo -->
+        <section class="slide">
+            <h2>✨ Live Demo: AI Market Briefing</h2>
+            <div class="gemini-feature-container">
+                 <p>Enter a stock ticker to get an instant market analysis, powered by Gemini.</p>
+                 <div class="input-group">
+                     <input type="text" id="ticker-input" placeholder="e.g., GOOGL, TSLA">
+                     <button id="analyze-button">Analyze</button>
+                 </div>
+                 <div id="briefing-result">
+                     <!-- AI-generated content will appear here -->
+                 </div>
+            </div>
+        </section>
+
+
+        <!-- Slide 9: Business Model -->
+        <section class="slide">
+            <h2>Proprietary Trading at Scale.</h2>
+            <p>We are a technology-driven proprietary trading firm. Our revenue is generated directly from our trading profits.</p>
+            <div class="columns">
+                <div class="column">
+                    <h3>Phase 1: Seed</h3>
+                    <p>Trade our own capital (including this investment) to build a verifiable track record.</p>
+                </div>
+                <div class="column">
+                    <h3>Phase 2: Scale</h3>
+                    <p>Raise a dedicated fund to scale our strategies and compound returns.</p>
+                </div>
+            </div>
+            <h3 style="margin-top: 4rem;">Our model is simple: The better our AI performs, the more we make.</h3>
+        </section>
+
+        <!-- Slide 10: Competitive Advantage -->
+        <section class="slide">
+             <h2>Why We Win.</h2>
+            <div class="columns" style="text-align: left;">
+                <div class="column">
+                    <h3>Architectural Edge</h3>
+                    <p>Our "army of models" approach is more resilient and adaptive than the monolithic models used by traditional quant funds.</p>
+                </div>
+                <div class="column">
+                    <h3>Speed & Efficiency</h3>
+                    <p>Our custom Go framework (Zerfoo) is built for the high-concurrency, real-time needs of modern markets, outperforming legacy Python stacks.</p>
+                </div>
+                 <div class="column">
+                    <h3>Full-Stack Focus</h3>
+                    <p>We are not selling tools. By being the end-user, we have the fastest possible iteration loop to improve our technology and strategies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: The Team -->
+        <section class="slide">
+            <h2>Built by a Lifelong Builder.</h2>
+            <div class="team-layout">
+                <div class="team-headshot"></div>
+                <div>
+                    <h3>David Ndungu, Founder</h3>
+                    <p style="margin: 0.5rem 0;"><strong>Staff Software Engineer, Zendesk.</strong></p>
+                    <p>Expert in Go, Kubernetes, and building high-performance distributed systems. A self-taught expert in machine learning and quantitative trading, driven by a nearly two-decade obsession to solve this problem. This isn't a job; it's a life's mission.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: The Ask -->
+        <section class="slide">
+            <h2>Join Us in Building the Future.</h2>
+            <p style="font-size: 1.5rem; margin: 2rem auto;">We are seeking <strong>$500,000</strong> in pre-seed funding to achieve the following milestones over the next 18 months:</p>
+            <ul>
+                <li><strong>Live Trading Infrastructure:</strong> Finalize brokerage integrations and deploy our first 100 models with real capital.</li>
+                <li><strong>Expand Model Coverage:</strong> Grow from 100 to 1,000+ AI models across equities and crypto.</li>
+                <li><strong>Key Hire:</strong> Bring on a quantitative researcher to accelerate strategy development.</li>
+                <li><strong>Build Track Record:</strong> Establish a 12-month live performance record to prepare for scaling.</li>
+            </ul>
+        </section>
+
+        <!-- Slide 13: Contact -->
+        <section class="slide">
+            <div class="logo" style="width: 150px; height: 150px;"></div>
+            <h1 style="margin-top: 2rem;">Let's Build the Future of Finance.</h1>
+            <p class="accent-p" style="margin-top: 2rem;">David Ndungu</p>
+            <p style="font-size: 1.2rem;">david@feza.ai</p>
+        </section>
+
+        <!-- Deck Controls -->
+        <div id="deck-controls">
+            <button id="prev-button" class="nav-button">&larr;</button>
+            <button id="next-button" class="nav-button">&rarr;</button>
+        </div>
+        <div id="slide-counter"></div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const slides = document.querySelectorAll('.slide');
+            const nextButton = document.getElementById('next-button');
+            const prevButton = document.getElementById('prev-button');
+            const slideCounter = document.getElementById('slide-counter');
+            let currentSlide = 0;
+
+            const showSlide = (index) => {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+                slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
+            };
+
+            nextButton.addEventListener('click', () => {
+                const nextSlide = (currentSlide + 1) % slides.length;
+                showSlide(nextSlide);
+            });
+
+            prevButton.addEventListener('click', () => {
+                const prevSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(prevSlide);
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    nextButton.click();
+                } else if (e.key === 'ArrowLeft') {
+                    prevButton.click();
+                }
+            });
+
+            // System theme detection
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const applySystemTheme = (matches) => {
+                body.classList.toggle('dark-mode', matches);
+                body.classList.toggle('light-mode', !matches);
+            };
+
+            applySystemTheme(prefersDarkScheme.matches);
+            prefersDarkScheme.addEventListener('change', (e) => applySystemTheme(e.matches));
+            
+            // --- Gemini API Feature Logic ---
+            const analyzeButton = document.getElementById('analyze-button');
+            const tickerInput = document.getElementById('ticker-input');
+            const resultContainer = document.getElementById('briefing-result');
+
+            analyzeButton.addEventListener('click', async () => {
+                const ticker = tickerInput.value.trim().toUpperCase();
+                if (!ticker) {
+                    resultContainer.innerHTML = 'Please enter a stock ticker.';
+                    return;
+                }
+
+                resultContainer.innerHTML = '<div class="loader"></div>';
+
+                const prompt = `Provide a concise market briefing for the stock ticker: ${ticker}. Focus on the following points in a professional, neutral tone suitable for a financial analyst:
+                1.  **Recent News & Catalysts:** What are the 1-2 most significant recent news items or events affecting this stock?
+                2.  **General Sentiment:** What is the current market sentiment (e.g., bullish, bearish, neutral) based on recent price action and news?
+                3.  **Key Levels to Watch:** What are the key support and resistance levels analysts are watching?
+                
+                Format the response clearly with headings.`;
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // API key will be provided by the environment
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        // Simple markdown to HTML conversion
+                        const formattedText = text
+                            .replace(/\*\*(.*?)\*\*/g, '<h3>$1</h3>') // Bold to h3 for headings
+                            .replace(/\*/g, '<br>• ') // Asterisks to list items
+                            .replace(/\n/g, '<br>');
+                        resultContainer.innerHTML = formattedText;
+                    } else {
+                        throw new Error('Invalid response structure from API.');
+                    }
+                } catch (error) {
+                    console.error('Error fetching from Gemini API:', error);
+                    resultContainer.innerHTML = `An error occurred while fetching the analysis. Please check the console for details.`;
+                }
+            });
+
+            // Initial setup
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
