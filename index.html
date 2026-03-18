@@ -64,7 +64,6 @@
             display: flex;
             align-items: center;
             gap: var(--space-3);
-            color: var(--text);
         }
 
         .nav-logo img {
@@ -76,7 +75,10 @@
             font-size: var(--text-md);
             font-weight: var(--weight-bold);
             letter-spacing: var(--tracking-tight);
-            color: var(--text);
+            background: linear-gradient(135deg, var(--brand-noise), var(--brand-signal), var(--brand-clarity));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -604,7 +606,6 @@
         <div class="nav-content">
             <a href="/" class="nav-logo">
                 <img src="images/feza.svg" alt="Feza">
-                <span>feza</span>
             </a>
             <div class="nav-links">
                 <a href="#thesis">Thesis</a>
@@ -624,11 +625,11 @@
         <div class="hero-stats">
             <div class="hero-stat">
                 <span class="value">4</span>
-                <span class="label">Profitable Models</span>
+                <span class="label">Validated Models</span>
             </div>
             <div class="hero-stat">
-                <span class="value">1.88</span>
-                <span class="label">Best Sharpe Ratio</span>
+                <span class="value">&gt;1.0</span>
+                <span class="label">Sharpe (all models)</span>
             </div>
             <div class="hero-stat">
                 <span class="value">245</span>
@@ -681,8 +682,8 @@
                     <div class="stack-card">
                         <h3>Trading Engine</h3>
                         <div class="subtitle">Proprietary &middot; Autonomous</div>
-                        <p>Our trading system ingests market data, engineers features, runs model inference, enforces risk limits, and executes orders &mdash; autonomously. The full signal-to-order loop runs without human intervention.</p>
-                        <p>Walk-forward validation gates every model before it trades. Automated retraining keeps strategies current. Real-time risk controls protect capital around the clock.</p>
+                        <p>Our trading system ingests market data, runs model inference, enforces risk limits, and executes orders &mdash; autonomously. The full signal-to-order loop runs without human intervention.</p>
+                        <p>Every model is validated before it trades. Automated retraining keeps strategies current. Real-time risk controls protect capital around the clock.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">Go</span>
                             <span class="tech-tag">Distributed</span>
@@ -739,68 +740,26 @@
             <div class="section-inner">
                 <div class="section-label">Validated Results</div>
                 <h2>Proof, not promises.</h2>
-                <p class="lead">Walk-forward validated models on real market data. No lookahead bias. No curve fitting. These are the numbers from our validation pipeline &mdash; the same gate that decides whether a model gets promoted to production.</p>
+                <p class="lead">Every model passes through a rigorous validation pipeline before it touches real capital. No lookahead bias. No curve fitting. No exceptions.</p>
 
-                <div class="metric-row" style="margin-bottom: var(--space-12);">
+                <div class="metric-row">
                     <div class="metric">
-                        <div class="value">55.9%</div>
-                        <div class="label">Best Directional Accuracy</div>
+                        <div class="value">4</div>
+                        <div class="label">Validated Models</div>
                     </div>
                     <div class="metric">
-                        <div class="value">1.88</div>
-                        <div class="label">Best Sharpe Ratio</div>
+                        <div class="value">&gt;1.0</div>
+                        <div class="label">Sharpe Ratio (all models)</div>
                     </div>
                     <div class="metric">
                         <div class="value">&lt;15%</div>
                         <div class="label">Max Drawdown Target</div>
                     </div>
                     <div class="metric">
-                        <div class="value">2&ndash;12ms</div>
-                        <div class="label">Training Latency</div>
+                        <div class="value">950+</div>
+                        <div class="label">Tests Passing</div>
                     </div>
                 </div>
-
-                <table class="perf-table">
-                    <thead>
-                        <tr>
-                            <th>Asset</th>
-                            <th>Strategy</th>
-                            <th>Directional Accuracy</th>
-                            <th>Sharpe Ratio</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>SPY</td>
-                            <td>Trend-following</td>
-                            <td class="positive">55.9%</td>
-                            <td class="positive">1.88</td>
-                            <td>Validated</td>
-                        </tr>
-                        <tr>
-                            <td>COIN</td>
-                            <td>Momentum</td>
-                            <td class="positive">54.5%</td>
-                            <td class="positive">1.42</td>
-                            <td>Validated</td>
-                        </tr>
-                        <tr>
-                            <td>GOOGL</td>
-                            <td>Multi-factor</td>
-                            <td class="positive">54.2%</td>
-                            <td class="positive">1.34</td>
-                            <td>Validated</td>
-                        </tr>
-                        <tr>
-                            <td>AMZN</td>
-                            <td>Trend-following</td>
-                            <td class="positive">53.4%</td>
-                            <td class="positive">1.07</td>
-                            <td>Validated</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
 
@@ -809,33 +768,33 @@
             <div class="section-inner">
                 <div class="section-label">Vision</div>
                 <h2>A decade of compounding.</h2>
-                <p class="lead">We think in decades. Each phase builds the foundation for the next &mdash; expanding asset classes, deepening the moat, and compounding both capital and capability.</p>
+                <p class="lead">We think in decades. Each phase builds the foundation for the next &mdash; expanding into new markets and compounding both capital and capability.</p>
 
                 <div class="roadmap">
                     <div class="roadmap-phase active">
                         <span class="active-badge">Current</span>
                         <div class="year">2026</div>
-                        <h4>First Blood</h4>
-                        <p>Live crypto trading on BTC, ETH, SOL. Automated retraining. Real-time risk controls. Proving real P&L with real capital.</p>
+                        <h4>First Capital</h4>
+                        <p>Live trading with real capital. Automated model retraining. Real-time risk controls. Proving P&L in production conditions.</p>
                         <div class="target"><strong>Target:</strong> Sharpe &gt; 1.0, positive cumulative P&L</div>
                     </div>
                     <div class="roadmap-phase">
                         <div class="year">2027&ndash;2028</div>
-                        <h4>Pack Formation</h4>
-                        <p>US equities via Interactive Brokers. Options capability. Multi-strategy portfolio with correlation-aware allocation. 12-month audited track record.</p>
-                        <div class="target"><strong>Target:</strong> 4+ strategies, combined Sharpe &gt; 1.5</div>
+                        <h4>Expansion</h4>
+                        <p>New asset classes. Multi-strategy portfolio management. 12-month audited track record. Institutional-grade reporting.</p>
+                        <div class="target"><strong>Target:</strong> Multiple uncorrelated strategies</div>
                     </div>
                     <div class="roadmap-phase">
                         <div class="year">2029&ndash;2031</div>
-                        <h4>Hunting Grounds</h4>
-                        <p>Fund launch. Global futures. Market-making. Self-improving alpha discovery &mdash; the system finds its own strategies.</p>
-                        <div class="target"><strong>Target:</strong> 10+ strategies across 3+ asset classes</div>
+                        <h4>Scale</h4>
+                        <p>Fund launch. Global markets. The system expands into new territories and begins discovering strategies autonomously.</p>
+                        <div class="target"><strong>Target:</strong> Multi-asset class, multi-geography</div>
                     </div>
                     <div class="roadmap-phase">
                         <div class="year">2032&ndash;2036</div>
                         <h4>Apex</h4>
-                        <p>Every major asset class. Every major market. Causal inference. Transfer learning across markets. The world's most valuable trading intelligence.</p>
-                        <div class="target"><strong>Target:</strong> Sharpe &gt; 2.0, global multi-asset</div>
+                        <p>Full-spectrum market coverage. The world's most valuable trading intelligence &mdash; built by machines, for machines.</p>
+                        <div class="target"><strong>Target:</strong> Global, autonomous, compounding</div>
                     </div>
                 </div>
             </div>
@@ -849,7 +808,7 @@
                         <div class="section-label">Open Source</div>
                         <h2>Our ML engine is open source. On purpose.</h2>
                         <p>Zerfoo is the ML inference framework that powers every trading signal we produce. We open-sourced it because the best infrastructure gets built in the open &mdash; by the community, for the community.</p>
-                        <p>Our edge isn't the framework. It's the strategies, the data, the risk systems, and the decade of compounding that sits on top of it. Open-sourcing Zerfoo makes the foundation stronger without giving away the alpha.</p>
+                        <p>A stronger foundation benefits everyone. What we build on top of it is ours.</p>
                         <a href="https://zerfoo.feza.ai" target="_blank" rel="noopener" class="cta-link" style="margin-top: var(--space-4);">Explore Zerfoo &rarr;</a>
                     </div>
                     <div class="split-visual code-block">
@@ -876,7 +835,7 @@
                     <div class="section-label">Founder</div>
                     <blockquote>"I spent eight years watching human emotion destroy perfectly good trading strategies &mdash; including my own. So I decided to remove the human from the loop entirely."</blockquote>
                     <p>David built distributed systems at scale at Zendesk, then taught himself machine learning from first principles. Feza is not a side project or an experiment &mdash; it's the convergence of deep infrastructure expertise and an obsessive conviction that markets belong to machines.</p>
-                    <p>One founder. Sixty AI agents. Building the most automated trading company on earth.</p>
+                    <p>One founder. A fleet of AI agents. Building the most automated trading company on earth.</p>
                 </div>
             </div>
         </section>
