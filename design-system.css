@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Feza Design System — "Signal from Noise"
+   ==========================================================================
+   Brand thesis: ML technology extracts trading signal from market noise.
+   The palette moves from the void of raw data to the clarity of alpha.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. COLOR TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* --- Brand gradient (logo source) --- */
+  --brand-noise:        #1E1B4B;  /* deep indigo — raw market data */
+  --brand-signal:       #059669;  /* emerald — the edge emerging */
+  --brand-clarity:      #34D399;  /* mint — clear alpha */
+
+  /* --- Extended palette --- */
+  --indigo-950:         #0B0A1F;
+  --indigo-900:         #1E1B4B;
+  --indigo-800:         #2E2A6E;
+  --indigo-700:         #3E3A8E;
+  --indigo-100:         #E0E0F7;
+  --indigo-50:          #EEEEF9;
+
+  --emerald-700:        #047857;
+  --emerald-600:        #059669;
+  --emerald-500:        #10B981;
+  --emerald-400:        #34D399;
+  --emerald-300:        #6EE7B7;
+  --emerald-100:        #D1FAE5;
+  --emerald-50:         #ECFDF5;
+
+  --neutral-950:        #0A0A0F;
+  --neutral-900:        #111118;
+  --neutral-800:        #1C1C26;
+  --neutral-700:        #2A2A38;
+  --neutral-600:        #3F3F50;
+  --neutral-400:        #7C7C8E;
+  --neutral-300:        #A3A3B3;
+  --neutral-200:        #D1D1DC;
+  --neutral-100:        #E8E8EF;
+  --neutral-50:         #F4F4F8;
+  --neutral-0:          #FFFFFF;
+
+  /* --- Semantic (dark mode default) --- */
+  --bg:                 var(--neutral-950);
+  --bg-surface:         var(--neutral-900);
+  --bg-elevated:        var(--neutral-800);
+  --border:             var(--neutral-700);
+  --border-subtle:      var(--neutral-800);
+  --text:               #E2E8F0;
+  --text-secondary:     var(--neutral-400);
+  --text-muted:         var(--neutral-600);
+  --accent:             var(--emerald-400);
+  --accent-hover:       var(--emerald-300);
+  --accent-strong:      var(--emerald-600);
+  --accent-subtle:      rgba(52, 211, 153, 0.10);
+  --signal:             var(--emerald-400);  /* positive / profit / go */
+  --noise:              var(--indigo-800);   /* depth / background data */
+
+  /* --- Light mode overrides (applied via .light-mode) --- */
+  --bg-light:           var(--neutral-50);
+  --bg-surface-light:   var(--neutral-0);
+  --bg-elevated-light:  var(--neutral-0);
+  --border-light:       var(--neutral-200);
+  --border-subtle-light:var(--neutral-100);
+  --text-light:         var(--indigo-900);
+  --text-secondary-light:var(--neutral-600);
+  --accent-light:       var(--emerald-600);
+  --accent-hover-light: var(--emerald-700);
+
+  /* --------------------------------------------------------------------------
+     2. TYPOGRAPHY
+     -------------------------------------------------------------------------- */
+  --font-sans:          'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                        Roboto, Oxygen, Ubuntu, sans-serif;
+  --font-mono:          'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas,
+                        monospace;
+
+  /* Scale — minor third (1.2) */
+  --text-xs:            0.694rem;   /* 11.1px */
+  --text-sm:            0.833rem;   /* 13.3px */
+  --text-base:          1rem;       /* 16px */
+  --text-md:            1.2rem;     /* 19.2px */
+  --text-lg:            1.44rem;    /* 23px */
+  --text-xl:            1.728rem;   /* 27.6px */
+  --text-2xl:           2.074rem;   /* 33.2px */
+  --text-3xl:           2.488rem;   /* 39.8px */
+  --text-4xl:           2.986rem;   /* 47.8px */
+  --text-hero:          clamp(3rem, 6vw, 4.5rem);
+
+  --leading-tight:      1.1;
+  --leading-snug:       1.3;
+  --leading-normal:     1.5;
+  --leading-relaxed:    1.7;
+
+  --weight-light:       300;
+  --weight-normal:      400;
+  --weight-medium:      500;
+  --weight-bold:        700;
+
+  --tracking-tight:     -0.02em;
+  --tracking-normal:    0;
+  --tracking-wide:      0.02em;
+
+  /* --------------------------------------------------------------------------
+     3. SPACING
+     -------------------------------------------------------------------------- */
+  --space-1:            0.25rem;   /* 4px */
+  --space-2:            0.5rem;    /* 8px */
+  --space-3:            0.75rem;   /* 12px */
+  --space-4:            1rem;      /* 16px */
+  --space-5:            1.25rem;   /* 20px */
+  --space-6:            1.5rem;    /* 24px */
+  --space-8:            2rem;      /* 32px */
+  --space-10:           2.5rem;    /* 40px */
+  --space-12:           3rem;      /* 48px */
+  --space-16:           4rem;      /* 64px */
+  --space-20:           5rem;      /* 80px */
+  --space-24:           6rem;      /* 96px */
+  --space-32:           8rem;      /* 128px */
+
+  /* --------------------------------------------------------------------------
+     4. RADII
+     -------------------------------------------------------------------------- */
+  --radius-sm:          4px;
+  --radius-md:          8px;
+  --radius-lg:          12px;
+  --radius-xl:          24px;
+  --radius-full:        9999px;
+
+  /* --------------------------------------------------------------------------
+     5. SHADOWS
+     -------------------------------------------------------------------------- */
+  --shadow-sm:          0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-md:          0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-lg:          0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-glow:        0 0 20px rgba(52, 211, 153, 0.15);
+
+  /* --------------------------------------------------------------------------
+     6. TRANSITIONS
+     -------------------------------------------------------------------------- */
+  --duration-fast:      150ms;
+  --duration-normal:    300ms;
+  --duration-slow:      500ms;
+  --ease-default:       cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:            cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:           cubic-bezier(0, 0, 0.2, 1);
+
+  /* --------------------------------------------------------------------------
+     7. LAYOUT
+     -------------------------------------------------------------------------- */
+  --max-width:          1200px;
+  --max-width-narrow:   800px;
+  --max-width-prose:    65ch;
+}
+
+/* --------------------------------------------------------------------------
+   8. DARK MODE (default)
+   -------------------------------------------------------------------------- */
+body,
+body.dark-mode {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+body.dark-mode .accent-text  { color: var(--accent); }
+body.dark-mode .surface      { background-color: var(--bg-surface); }
+body.dark-mode .elevated     { background-color: var(--bg-elevated); }
+body.dark-mode .border       { border-color: var(--border); }
+
+/* --------------------------------------------------------------------------
+   9. LIGHT MODE
+   -------------------------------------------------------------------------- */
+body.light-mode {
+  --bg:              var(--bg-light);
+  --bg-surface:      var(--bg-surface-light);
+  --bg-elevated:     var(--bg-elevated-light);
+  --border:          var(--border-light);
+  --border-subtle:   var(--border-subtle-light);
+  --text:            var(--text-light);
+  --text-secondary:  var(--text-secondary-light);
+  --accent:          var(--accent-light);
+  --accent-hover:    var(--accent-hover-light);
+  --accent-subtle:   rgba(5, 150, 105, 0.08);
+  --shadow-glow:     0 0 20px rgba(5, 150, 105, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   10. UTILITY CLASSES
+   -------------------------------------------------------------------------- */
+
+/* Brand gradient — use on backgrounds or as mask for text */
+.gradient-brand {
+  background: linear-gradient(135deg, var(--brand-noise), var(--brand-signal), var(--brand-clarity));
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-noise), var(--brand-signal), var(--brand-clarity));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Signal glow — use on cards or elements that need emphasis */
+.glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.glow-strong {
+  box-shadow: 0 0 30px rgba(52, 211, 153, 0.25), 0 0 60px rgba(52, 211, 153, 0.08);
+}
+
+/* Accent backgrounds */
+.bg-accent-subtle {
+  background-color: var(--accent-subtle);
+}
