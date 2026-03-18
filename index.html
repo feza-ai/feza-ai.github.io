@@ -64,6 +64,7 @@
             display: flex;
             align-items: center;
             gap: var(--space-3);
+            color: var(--text);
         }
 
         .nav-logo img {
@@ -75,6 +76,7 @@
             font-size: var(--text-md);
             font-weight: var(--weight-bold);
             letter-spacing: var(--tracking-tight);
+            color: var(--text);
         }
 
         .nav-links {
@@ -277,6 +279,20 @@
             border-radius: var(--radius-xl);
             border: 1px solid var(--border-subtle);
             background-color: var(--bg-surface);
+        }
+
+        /* Code blocks stay dark in both modes */
+        .code-block {
+            background-color: #0A0A0F;
+            border-color: #1C1C26;
+            --accent: #34D399;
+            --text-secondary: #7C7C8E;
+            --text-muted: #3F3F50;
+        }
+
+        body.light-mode .code-block {
+            background-color: #0A0A0F;
+            border-color: #1C1C26;
         }
 
         /* ---- Metric Row ---- */
@@ -604,7 +620,7 @@
     <header class="hero">
         <img src="images/feza.svg" alt="Feza" class="hero-logo">
         <h1>The signal in<br>the noise.</h1>
-        <p class="subtitle">Feza builds autonomous trading systems that find, validate, and execute alpha across global markets &mdash; powered by our own ML infrastructure, written entirely in Go.</p>
+        <p class="subtitle">Feza builds autonomous trading systems that find, validate, and execute alpha across global markets &mdash; powered by ML infrastructure we built ourselves, for exactly this.</p>
         <div class="hero-stats">
             <div class="hero-stat">
                 <span class="value">4</span>
@@ -702,7 +718,7 @@
                         <p>Most quant firms stitch together Python for research, C++ for execution, Java for infrastructure, and pray the interfaces don't break. We write everything in Go &mdash; from CUDA kernel bindings to REST APIs to model training.</p>
                         <p>Single binary deployment. No runtime dependencies. No GIL. No framework lock-in. When we find a bottleneck, we fix it in the same language the rest of the system speaks.</p>
                     </div>
-                    <div class="split-visual">
+                    <div class="split-visual code-block">
                         <div style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.8;">
                             <div style="color: var(--text-muted); margin-bottom: var(--space-4);">// The loop</div>
                             <div><span style="color: var(--accent);">data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; ingest &amp; normalize</div>
@@ -836,7 +852,7 @@
                         <p>Our edge isn't the framework. It's the strategies, the data, the risk systems, and the decade of compounding that sits on top of it. Open-sourcing Zerfoo makes the foundation stronger without giving away the alpha.</p>
                         <a href="https://zerfoo.feza.ai" target="_blank" rel="noopener" class="cta-link" style="margin-top: var(--space-4);">Explore Zerfoo &rarr;</a>
                     </div>
-                    <div class="split-visual">
+                    <div class="split-visual code-block">
                         <div style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-secondary); line-height: 2;">
                             <div style="color: var(--text-muted);">// One line. That's it.</div>
                             <div><span style="color: var(--accent);">model</span>, _ := zerfoo.<span style="color: #3B82F6;">Load</span>(<span style="color: #34D399;">"google/gemma-3-4b"</span>)</div>
