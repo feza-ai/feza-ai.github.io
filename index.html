@@ -214,6 +214,8 @@
             margin: 0 0 var(--space-16) 0;
         }
 
+        .section-no-top-pad { padding-top: 0; }
+
         /* ---- Thesis Section ---- */
         .thesis-grid {
             display: grid;
@@ -576,6 +578,29 @@
 
         .footer-right a:hover { color: var(--accent); }
 
+        /* ---- Mobile Nav Toggle ---- */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-2);
+            color: var(--text);
+        }
+
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
         /* ---- Responsive ---- */
         @media (max-width: 1024px) {
             .thesis-grid { grid-template-columns: repeat(2, 1fr); }
@@ -584,16 +609,91 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-stats { flex-direction: column; gap: var(--space-6); }
-            .thesis-grid { grid-template-columns: 1fr; }
-            .split { grid-template-columns: 1fr; gap: var(--space-12); }
+            /* Nav: hamburger menu */
+            .nav-toggle { display: block; }
+            .nav-content { padding: 0 var(--space-6); }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                padding: var(--space-6);
+                gap: var(--space-6);
+                border-bottom: 1px solid var(--border-subtle);
+            }
+            body.dark-mode .nav-links { background-color: rgba(10, 10, 15, 0.95); }
+            body.light-mode .nav-links { background-color: rgba(244, 244, 248, 0.95); }
+            .nav-links a { font-size: var(--text-base); }
+
+            /* Hero */
+            .hero {
+                padding: var(--space-24) var(--space-6) var(--space-16);
+                min-height: auto;
+            }
+            .hero-logo { width: 80px; height: 80px; }
+            .hero h1 { margin-bottom: var(--space-6); }
+            .hero .subtitle { margin-bottom: var(--space-8); }
+            .hero-stats {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-6);
+                margin-top: var(--space-8);
+                width: 100%;
+                max-width: 320px;
+            }
+
+            /* Sections */
+            .section { padding: var(--space-20) var(--space-6); }
+            .section h2 br { display: none; }
+            .section .lead { margin-bottom: var(--space-10); }
+
+            /* Grids → single column */
+            .thesis-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+            .thesis-card { padding: var(--space-6); }
+            .stack-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+            .stack-card { padding: var(--space-6); }
+
+            /* Split layouts → stacked */
+            .split { grid-template-columns: 1fr; gap: var(--space-8); }
             .split.reverse { direction: ltr; }
-            .stack-grid { grid-template-columns: 1fr; }
-            .roadmap { grid-template-columns: 1fr; }
-            .metric-row { grid-template-columns: repeat(2, 1fr); }
-            .footer-inner { flex-direction: column; gap: var(--space-6); text-align: center; }
-            .cta-links { flex-direction: column; align-items: center; }
+            .split-visual { padding: var(--space-6); overflow-x: auto; }
+
+            /* Code blocks: scrollable on overflow */
+            .code-block { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .code-block > div { min-width: 280px; }
+
+            /* Metrics */
+            .metric-row { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+            .metric { padding: var(--space-4); }
+
+            /* Roadmap → stacked */
+            .roadmap { grid-template-columns: 1fr; gap: var(--space-4); }
+
+            /* Founder */
+            .founder-inner blockquote {
+                font-size: var(--text-lg);
+                margin: var(--space-6) 0;
+            }
+            .founder-inner p { font-size: var(--text-base); }
+
+            /* CTA */
+            .cta-banner { padding: var(--space-16) var(--space-6); }
+            .cta-links { flex-direction: column; align-items: center; gap: var(--space-6); }
+
+            /* Footer */
+            .footer-inner {
+                flex-direction: column;
+                gap: var(--space-6);
+                text-align: center;
+            }
+            .footer-right { flex-wrap: wrap; justify-content: center; gap: var(--space-6); }
+        }
+
+        @media (max-width: 380px) {
+            .hero-stats { grid-template-columns: 1fr; max-width: 200px; }
+            .metric-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -606,7 +706,10 @@
             <a href="/" class="nav-logo">
                 <img src="images/feza.svg" alt="Feza">
             </a>
-            <div class="nav-links">
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="nav-links" id="nav-links">
                 <a href="#thesis">Thesis</a>
                 <a href="#technology">Technology</a>
                 <a href="#performance">Performance</a>
@@ -709,7 +812,7 @@
         </section>
 
         <!-- Architecture -->
-        <section class="section" style="padding-top: 0;">
+        <section class="section section-no-top-pad">
             <div class="section-inner">
                 <div class="split">
                     <div class="split-text">
@@ -890,6 +993,20 @@
             prefersDarkScheme.addEventListener('change', (e) => {
                 applySystemTheme(e.matches);
             });
+
+            // Mobile nav toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('open');
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('open');
+                    });
+                });
+            }
 
             // Intersection Observer for fade-in animations
             const observer = new IntersectionObserver((entries) => {
