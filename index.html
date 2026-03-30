@@ -766,19 +766,19 @@
         <p class="subtitle">Feza builds autonomous trading systems that find, validate, and execute alpha across global markets &mdash; powered by ML infrastructure we built ourselves, for exactly this.</p>
         <div class="hero-stats">
             <div class="hero-stat">
-                <span class="value">4</span>
-                <span class="label">Validated Models</span>
+                <span class="value">167</span>
+                <span class="label">ML Features</span>
             </div>
             <div class="hero-stat">
-                <span class="value">&gt;1.0</span>
-                <span class="label">Sharpe (all models)</span>
+                <span class="value">98</span>
+                <span class="label">Technical Indicators</span>
             </div>
             <div class="hero-stat">
                 <span class="value">245</span>
                 <span class="label">tok/s Inference</span>
             </div>
             <div class="hero-stat">
-                <span class="value">950+</span>
+                <span class="value">1,700+</span>
                 <span class="label">Tests Passing</span>
             </div>
         </div>
@@ -824,8 +824,8 @@
                     <div class="stack-card">
                         <h3>Trading Engine</h3>
                         <div class="subtitle">Proprietary &middot; Autonomous</div>
-                        <p>Our trading system ingests market data, runs model inference, enforces risk limits, and executes orders &mdash; autonomously. The full signal-to-order loop runs without human intervention.</p>
-                        <p>Every model is validated before it trades. Automated retraining keeps strategies current. Real-time risk controls protect capital around the clock.</p>
+                        <p>Our trading system ingests market data across 98 technical indicators, runs model inference through a 167-feature ML pipeline with configurable lag depth, enforces risk limits, and executes orders &mdash; autonomously.</p>
+                        <p>Walk-forward validated. Multi-timeframe analysis. Real-time drift detection and automated retraining. A native macOS desktop app for monitoring positions, signals, and strategy performance.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">Go</span>
                             <span class="tech-tag">Distributed</span>
@@ -836,7 +836,7 @@
                     <div class="stack-card">
                         <h3>Zerfoo</h3>
                         <div class="subtitle">Open Source &middot; ML Framework</div>
-                        <p>A production-grade ML inference and training framework written entirely in Go with zero CGo dependency. Runs 6 model architectures at 245 tok/s &mdash; 20% faster than Ollama. Every trading signal we generate flows through Zerfoo inference.</p>
+                        <p>A production-grade ML inference and training framework written entirely in Go with zero CGo dependency. Runs 10 model architectures at 245 tok/s &mdash; 20% faster than Ollama. Every trading signal we generate flows through Zerfoo inference.</p>
                         <p>Open source under Apache 2.0. 25+ custom CUDA kernels. OpenAI-compatible API. The Go ecosystem's answer to PyTorch.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">Pure Go</span>
@@ -886,19 +886,19 @@
 
                 <div class="metric-row">
                     <div class="metric">
-                        <div class="value">4</div>
-                        <div class="label">Validated Models</div>
+                        <div class="value">56.8%</div>
+                        <div class="label">Walk-Forward Accuracy</div>
                     </div>
                     <div class="metric">
-                        <div class="value">&gt;1.0</div>
-                        <div class="label">Sharpe Ratio (all models)</div>
+                        <div class="value">167</div>
+                        <div class="label">Engineered Features</div>
                     </div>
                     <div class="metric">
                         <div class="value">&lt;15%</div>
                         <div class="label">Max Drawdown Target</div>
                     </div>
                     <div class="metric">
-                        <div class="value">950+</div>
+                        <div class="value">1,700+</div>
                         <div class="label">Tests Passing</div>
                     </div>
                 </div>
@@ -958,7 +958,7 @@
                             <div style="color: var(--text-muted);">// One line. That's it.</div>
                             <div><span style="color: var(--accent);">model</span>, _ := zerfoo.<span style="color: #3B82F6;">Load</span>(<span style="color: #34D399;">"google/gemma-3-4b"</span>)</div>
                             <div>&nbsp;</div>
-                            <div style="color: var(--text-muted);">// 6 architectures. 245 tok/s.</div>
+                            <div style="color: var(--text-muted);">// 10 architectures. 245 tok/s.</div>
                             <div style="color: var(--text-muted);">// 25+ CUDA kernels. Zero CGo.</div>
                             <div style="color: var(--text-muted);">// 20% faster than Ollama.</div>
                             <div>&nbsp;</div>
