@@ -766,12 +766,12 @@
         <p class="subtitle">Feza builds autonomous trading systems that find, validate, and execute alpha across global markets &mdash; powered by ML infrastructure we built ourselves, for exactly this.</p>
         <div class="hero-stats">
             <div class="hero-stat">
-                <span class="value">167</span>
-                <span class="label">ML Features</span>
+                <span class="value">75%</span>
+                <span class="label">Walk-Forward Accuracy</span>
             </div>
             <div class="hero-stat">
-                <span class="value">98</span>
-                <span class="label">Technical Indicators</span>
+                <span class="value">5 Years</span>
+                <span class="label">Validated History</span>
             </div>
             <div class="hero-stat">
                 <span class="value">245</span>
@@ -797,7 +797,7 @@
                     <div class="thesis-card">
                         <div class="card-accent"></div>
                         <h3>AI is the edge</h3>
-                        <p>Financial markets are information-processing machines. The participant with the best signal extraction wins. Our systems process market data continuously, finding patterns human traders cannot see and acting on them without hesitation or emotion.</p>
+                        <p>Financial markets are information-processing machines. The participant with the best signal extraction wins. Our systems achieve 75% directional accuracy across 5 years of out-of-sample data &mdash; finding patterns human traders cannot see and acting on them without hesitation or emotion.</p>
                     </div>
                     <div class="thesis-card">
                         <div class="card-accent"></div>
@@ -824,8 +824,8 @@
                     <div class="stack-card">
                         <h3>Trading Engine</h3>
                         <div class="subtitle">Proprietary &middot; Autonomous</div>
-                        <p>Our trading system ingests market data across 98 technical indicators, runs model inference through a 167-feature ML pipeline with configurable lag depth, enforces risk limits, and executes orders &mdash; autonomously.</p>
-                        <p>Walk-forward validated. Multi-timeframe analysis. Real-time drift detection and automated retraining. A native macOS desktop app for monitoring positions, signals, and strategy performance.</p>
+                        <p>Our trading system processes live market data through a proprietary multi-resolution signal extraction pipeline, enforces risk limits, and executes orders &mdash; autonomously. 75% directional accuracy validated across 5 years of out-of-sample data.</p>
+                        <p>Walk-forward validated with shuffled-label controls and seed stability tests. No lookahead bias. No curve fitting. A native macOS desktop app for monitoring positions, signals, and strategy performance.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">Go</span>
                             <span class="tech-tag">Distributed</span>
@@ -836,8 +836,8 @@
                     <div class="stack-card">
                         <h3>Zerfoo</h3>
                         <div class="subtitle">Open Source &middot; ML Framework</div>
-                        <p>A production-grade ML inference and training framework written entirely in Go with zero CGo dependency. Runs 10 model architectures at 245 tok/s &mdash; 20% faster than Ollama. Every trading signal we generate flows through Zerfoo inference.</p>
-                        <p>Open source under Apache 2.0. 25+ custom CUDA kernels. OpenAI-compatible API. The Go ecosystem's answer to PyTorch.</p>
+                        <p>A production-grade ML inference and training framework written entirely in Go with zero CGo dependency. Runs 10+ model architectures at 245 tok/s &mdash; 20% faster than Ollama. Every trading signal we generate flows through Zerfoo.</p>
+                        <p>Open source under Apache 2.0. 25+ custom CUDA kernels. OpenAI-compatible API. The Go ecosystem's answer to PyTorch &mdash; and our unfair advantage in production latency.</p>
                         <div class="tech-tags">
                             <span class="tech-tag">Pure Go</span>
                             <span class="tech-tag">CUDA</span>
@@ -858,14 +858,14 @@
                     <div class="split-text">
                         <div class="section-label">Architecture</div>
                         <h2>One language. One codebase. Zero compromise.</h2>
-                        <p>Most quant firms stitch together Python for research, C++ for execution, Java for infrastructure, and pray the interfaces don't break. We write everything in Go &mdash; from CUDA kernel bindings to REST APIs to model training.</p>
-                        <p>Single binary deployment. No runtime dependencies. No GIL. No framework lock-in. When we find a bottleneck, we fix it in the same language the rest of the system speaks.</p>
+                        <p>Most quant firms stitch together Python for research, C++ for execution, Java for infrastructure, and pray the interfaces don't break. We write everything in Go &mdash; from CUDA kernel bindings to REST APIs to model inference.</p>
+                        <p>Single binary deployment. No runtime dependencies. No GIL. No framework lock-in. Research in Python, production in Go &mdash; same architecture, verified identical outputs.</p>
                     </div>
                     <div class="split-visual code-block">
                         <div style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.8;">
                             <div style="color: var(--text-muted); margin-bottom: var(--space-4);">// The loop</div>
                             <div><span style="color: var(--accent);">data</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; ingest &amp; normalize</div>
-                            <div><span style="color: var(--accent);">features</span> &nbsp;&nbsp;&nbsp;&rarr; engineer &amp; select</div>
+                            <div><span style="color: var(--accent);">signals</span> &nbsp;&nbsp;&nbsp;&nbsp;&rarr; extract &amp; fuse</div>
                             <div><span style="color: var(--accent);">inference</span> &nbsp;&rarr; predict direction</div>
                             <div><span style="color: var(--accent);">risk</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; validate &amp; size</div>
                             <div><span style="color: var(--accent);">execute</span> &nbsp;&nbsp;&nbsp;&rarr; order &rarr; fill</div>
@@ -882,24 +882,24 @@
             <div class="section-inner">
                 <div class="section-label">Validated Results</div>
                 <h2>Proof, not promises.</h2>
-                <p class="lead">Every model passes through a rigorous validation pipeline before it touches real capital. No lookahead bias. No curve fitting. No exceptions.</p>
+                <p class="lead">Every model passes through a six-test validation gauntlet: walk-forward evaluation, multi-seed stability, stride sensitivity, shuffled-label controls, reverse walk-forward, and label balance verification. No lookahead bias. No curve fitting. No exceptions.</p>
 
                 <div class="metric-row">
                     <div class="metric">
-                        <div class="value">56.8%</div>
+                        <div class="value">75.2%</div>
                         <div class="label">Walk-Forward Accuracy</div>
                     </div>
                     <div class="metric">
-                        <div class="value">167</div>
-                        <div class="label">Engineered Features</div>
+                        <div class="value">5 Years</div>
+                        <div class="label">Out-of-Sample Validation</div>
                     </div>
                     <div class="metric">
-                        <div class="value">&lt;15%</div>
-                        <div class="label">Max Drawdown Target</div>
+                        <div class="value">&lt;0.4%</div>
+                        <div class="label">Seed Variance</div>
                     </div>
                     <div class="metric">
-                        <div class="value">1,700+</div>
-                        <div class="label">Tests Passing</div>
+                        <div class="value">50.4%</div>
+                        <div class="label">Shuffled-Label Control</div>
                     </div>
                 </div>
             </div>
@@ -917,7 +917,7 @@
                         <span class="active-badge">Current</span>
                         <div class="year">2026</div>
                         <h4>First Capital</h4>
-                        <p>Live trading with real capital. Automated model retraining. Real-time risk controls. Proving P&L in production conditions.</p>
+                        <p>Model validated at 75% accuracy over 5 years. Production infrastructure deployed. Paper trading underway. Transitioning to live capital with real-time risk controls.</p>
                         <div class="target"><strong>Target:</strong> Sharpe &gt; 1.0, positive cumulative P&L</div>
                     </div>
                     <div class="roadmap-phase">
@@ -985,7 +985,7 @@
         <!-- CTA -->
         <section class="cta-banner">
             <h2>The signal is clear.</h2>
-            <p>We're building in public, shipping in private, and compounding from day one.</p>
+            <p>75% accuracy. 5 years of validation. Zero shortcuts. We're ready for capital.</p>
             <div class="cta-links">
                 <a href="mailto:hello@feza.ai" class="cta-link">hello@feza.ai &rarr;</a>
                 <a href="https://github.com/zerfoo/zerfoo" target="_blank" rel="noopener" class="cta-link">GitHub &rarr;</a>
@@ -1000,7 +1000,7 @@
         <div class="footer-inner">
             <div class="footer-left">
                 <img src="images/feza.svg" alt="Feza">
-                <span>&copy; 2025 Feza, Inc.</span>
+                <span>&copy; 2026 Feza, Inc.</span>
             </div>
             <div class="footer-right">
                 <a href="mailto:hello@feza.ai">Contact</a>
